@@ -1,1 +1,15 @@
+version: '3.8'
 
+services:
+  nexus-ai-core:
+    build: .
+    container_name: nexus_quantum_ai_engine
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - RPC_URL_EVM=https://eth-mainnet.g.alchemy.com/v2/YOUR-ALCHEMY-API-KEY
+      - RPC_URL_SOLANA=https://api.mainnet-beta.solana.com
+      - RISK_MAX_DRAWDOWN=0.05
+    volumes:
+      - .:/app
